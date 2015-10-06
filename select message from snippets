@@ -1,0 +1,15 @@
+   keyword   |                 message                 
+-------------+-----------------------------------------
+ insert      | Add new rows to a table
+ Test        | This is a test snippet
+ Test_2      | This second is a test snippet
+ lists       | A sequence of things - created using []
+ Test_trial2 | This is a test snippet
+ Test_3      | This is the third test
+ list        | Another test string
+ Test_6      | Test number 6
+ insert_1    | Trial 2 - Add new row to a table
+ insert_2    | Trial 3 - Add new row to a table
+ insert_3    | Trial 4 - Add new row to a table
+(11 rows)
+

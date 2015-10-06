@@ -1,47 +1,54 @@
+
 import logging
 import argparse
 import sys
 import psycopg2
 
-#logging.debug("Connecting to PostgreSQL")
-#connection = psycopg2.connect("dbname='snippets'")
-#logging.debug("Database connection established.")
-
 #Set the log output file, and the log level
 logging.basicConfig(filename="snippets.log", level=logging.DEBUG)
+
+logging.debug("Connecting to PostgreSQL")
+connection = psycopg2.connect("dbname='snippets'")
+logging.debug("Database connection established.")
+
 
 def put(name, snippet):
     """
     Store a snippet with an associated name.
     Returns the name and the snippet
     """
-    #logging.info("Storing snippet {!r}: {!r})".format(name, snippet))
-    #cursor =  connection.cursor()
-    ##command = "insert into snippets values (%s, %s)"
-    #cursor.execute(command, (name, snippet))
-    #connection.commit()
-    #logging.debug("Snippet stored successfully.")
+    logging.info("Storing snippet {!r}: {!r})".format(name, snippet))
+    cursor =  connection.cursor()
+    command = "insert into snippets values (%s, %s)"
+    cursor.execute(command, (name, snippet))
+    connection.commit()
+    logging.debug("Snippet stored successfully.")
     logging.error("FIXME: Unimplemented - put({!r}, {!r})".format(name, snippet))
     return name, snippet
     
 def get(name):
     """Retrieve the snippet with a given name.
-    If there is no such snippet... Initial Snippet??
+    If there is no such snippet... ??Initial Snippet and potential error conditions ??
     Returns the snippet.
     """
     logging.error("FIXME: Unimplemented - get({!r})".format(name))
     return ""
 
-# Use positional rather than optional arguments
-#python snippets.py put list "A sequence of things -  created using []"
-put_v = "put"
-list_v = "list"
-seq_v = "A sequence of things -  created using []"
+
 
 def main():
     """Main function"""
+    import pdb; pdb.set_trace() 
     logging.info("Constructing parser")
     parser = argparse.ArgumentParser(description="Store and retrieve of text")
+    parser.add_argument("list", help="echo the string you use here")
+    arguments = parser.parse_args()
+    
+    # Use positional rather than optional arguments
+    #python snippets.py put list "A sequence of things -  created using []"
+    put_v = "put"
+    list_v = "list"
+    seq_v = "A sequence of things -  created using []"
     
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
     
@@ -59,7 +66,6 @@ def main():
     get_parser.add_argument("snippet")
     
     
-    arguments = parser.parse_args(sys.argv[1:])
     # Convert parsed arguments from Namespace to dictionary
     arguments = vars(arguments)
     command = arguments.pop("command")

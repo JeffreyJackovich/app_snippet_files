@@ -1,0 +1,12 @@
+Create an Argparse interface:
+
+"Take the list of arguments 
+(for example put list "A sequence of things - created using []"), and split them into named variables
+("put", "list", and "A sequence of things - created using []"). 
+We will see how to access these variables in a moment."
+
+
+Putting the pieces together:
+Try adding a new snippet using your put command by running python snippets.py put Test "This is a test snippet". Take a look at the log. 
+You should see that the snippet is being stored successfully. 
+Then run a query on your database to make sure that it has been stored.
