@@ -35,15 +35,14 @@ def get(name):
     logging.info("Selecting with keyword {!r})".format(name))
     cursor = connection.cursor()
     command = "select keyword, message from snippets where keyword=%s" 
-    cursor.execute(command, (name))
+    cursor.execute(command, name)
     row = cursor.fetchone()
     #cursor.fetchone(snippet, )
     connection.commit()
     return row[0]
     logging.debug("Snippet obtained successfully.")
-    
     logging.error("FIXME: Unimplemented - get({!r})".format(name))
-    return ""
+    #return ""
 
 
 
