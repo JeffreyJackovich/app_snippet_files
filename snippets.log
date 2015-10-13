@@ -311,3 +311,17 @@ DEBUG:root:Constructing get subparser
 INFO:root:Selecting with keyword 'TuesTest')
 DEBUG:root:Snippet obtained successfully.
 ERROR:root:FIXME: Unimplemented - get('TuesTest')
+DEBUG:root:Connecting to PostgreSQL
+DEBUG:root:Database connection established.
+INFO:root:Constructing parser
+DEBUG:root:Constructing put subparser
+DEBUG:root:Constructing get subparser
+INFO:root:Selecting with keyword 'non_existantkeyword')
+DEBUG:root:Snippet obtained successfully.
+ERROR:root:FIXME: Unimplemented - get('non_existantkeyword')
+DEBUG:root:Connecting to PostgreSQL
+DEBUG:root:Database connection established.
+INFO:root:Constructing parser
+DEBUG:root:Constructing put subparser
+DEBUG:root:Constructing get subparser
+INFO:root:Storing snippet 'TuesTest': 'Tues test snippet.')
