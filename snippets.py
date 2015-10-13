@@ -34,12 +34,14 @@ def get(name):
     """
     logging.info("Selecting with keyword {!r})".format(name))
     cursor = connection.cursor()
-    command = "select keyword, message from snippets where keyword=%s" 
-    cursor.execute(command, name)
-    row = cursor.fetchone()
-    #cursor.fetchone(snippet, )
+    command = "select keyword, message from snippets where keyword=(%s)"
+    cursor.execute(command, (name, ))
+    row_count = 0
+    for row in cursor:
+        row_count += 1
+        print "row: %s   %s\n" % (row_count, row)
+    #return row[0]
     connection.commit()
-    return row[0]
     logging.debug("Snippet obtained successfully.")
     logging.error("FIXME: Unimplemented - get({!r})".format(name))
     #return ""
@@ -62,11 +64,10 @@ def main():
     put_parser.add_argument("snippet", help="The snippet text")
     #arguments = parser.parse_args(sys.argv[1:])
     
-    # Subparser for the gecommand
+    # Subparser for the get command
     logging.debug("Constructing get subparser")
     get_parser = subparsers.add_parser("get", help="get a snippet")
     get_parser.add_argument("name", help="The keyword to get the snippet")
-    #get_parser.add_argument("snippet", help="The snippet text")
     arguments = parser.parse_args(sys.argv[1:])
     
     # Convert parsed arguments from Namespace to dictionary
